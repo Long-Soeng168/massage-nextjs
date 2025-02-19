@@ -30,9 +30,12 @@ const CartItem = ({ item, isReadOnly = false }) => {
             </div>
           )}
           <span
-            className={`absolute capitalize top-0 right-0 px-1 text-[10px] text-white rounded-tr-sm rounded-bl-sm bg-real_primary/80 ${
+            className={`absolute capitalize top-0 right-0 px-1 text-[10px] text-white rounded-tr-sm rounded-bl-sm  ${
               item.type == "package" && "bg-gray-600/80"
-            } ${item.type == "service" && "bg-green-600/80"}`}
+            } 
+              ${item.type == "service" && "bg-green-600/80"}
+              ${item.type == "product" && "bg-real_primary/80"}
+              `}
           >
             {item.type}
           </span>
