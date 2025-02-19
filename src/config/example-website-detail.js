@@ -8,10 +8,10 @@ const APP_KEYWORD = "cosmetics in Phnom Penh, buy beauty products Cambodia, skin
 const APP_ADDRESS = "#123, St 456, Sangkat Toul Kork, Khan Toul Kork";
 const APP_TELEGRAM = "https://t.me/OBOCCambodia";
 const APP_EMAIL = "helejance@gmail.com";
-const APP_WEBSITE = "https://massage.brolong.pro/";
+const APP_WEBSITE = "https://ecommerce.brolong.pro";
 const APP_LOGO = "/logo.png";
 const APP_LOGO_POS_80_PINTER = "/logo.png";
-const APP_FAVICON = "https://admin-massage.brolong.pro/assets/images/website_infos/logo.png";
+const APP_FAVICON = "https://admin-ecommerce.brolong.pro/assets/images/website_infos/logo.png";
 const APP_CONTACT = "098 868 442 / 077 98 88 26";
 const APP_PAYMENT_MAYTHOD = ` <p className="text-sm text-gray-700">
               <strong>ABA 077988826 (USD):</strong> Sok Lak
