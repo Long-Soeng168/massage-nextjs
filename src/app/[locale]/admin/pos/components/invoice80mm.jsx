@@ -271,13 +271,6 @@ const Invoice80mm = ({ invoice, contentRef }) => {
                               : packageItem.pivot.usable_number}
                           </span>
                         );
-                      } else {
-                        return (
-                          <span key={packageItem.id} className="text-[10px]">
-                            <br />
-                            <strong>Remain:</strong> {0}
-                          </span>
-                        );
                       }
                     })}
                   </td>
