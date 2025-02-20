@@ -18,7 +18,9 @@ export default function ServiceCard({ product }) {
   }, []);
 
   const getProductQuantity = () => {
-    const cartItem = cartItems?.find((item) => item.id === product.id);
+    const cartItem = cartItems?.find(
+      (item) => item.id === product.id && item.type === "service"
+    );
     return cartItem ? cartItem.quantity : 0;
   };
 
@@ -71,9 +73,9 @@ export default function ServiceCard({ product }) {
             - {product.discount}%
           </span>
         )}
-         <span className="absolute px-1.5 py-0.5 text-xs rounded-tr-sm rounded-bl-sm text-white top-0 right-0 bg-green-600/80">
-            Service
-          </span>
+        <span className="absolute px-1.5 py-0.5 text-xs rounded-tr-sm rounded-bl-sm text-white top-0 right-0 bg-green-600/80">
+          Service
+        </span>
         {isPlayAnimation && quantity === 1 && (
           <span className="absolute -top-2 -right-2">
             <LottieAnimation

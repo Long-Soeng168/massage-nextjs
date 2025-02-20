@@ -18,7 +18,9 @@ export default function Card({ product }) {
   }, []);
 
   const getProductQuantity = () => {
-    const cartItem = cartItems?.find((item) => item.id === product.id);
+    const cartItem = cartItems?.find(
+      (item) => item.id === product.id && item.type === "product"
+    );
     return cartItem ? cartItem.quantity : 0;
   };
 

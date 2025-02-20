@@ -6,7 +6,7 @@ import LottieAnimation from "../../../../../components/ui/lottie-animation";
 import animationData from "/public/images/animations/success-animation2.json";
 import { usePOSCart } from "@/contexts/POSContext";
 import { IMAGE_BOOK_URL } from "@/config/env";
-import { ImageDown, ImageIcon, ImageOff, PackageIcon } from "lucide-react";
+import { PackageIcon } from "lucide-react";
 
 export default function PackageCard({ product }) {
   const { addToCart, cartItems } = usePOSCart();
@@ -18,7 +18,9 @@ export default function PackageCard({ product }) {
   }, []);
 
   const getProductQuantity = () => {
-    const cartItem = cartItems?.find((item) => item.id === product.id);
+    const cartItem = cartItems?.find(
+      (item) => item.id === product.id && item.type === "package"
+    );
     return cartItem ? cartItem.quantity : 0;
   };
 
@@ -38,11 +40,6 @@ export default function PackageCard({ product }) {
   };
 
   const quantity = isMounted ? getProductQuantity() : 0;
-  const hasDiscount = product.discount != 0 && product.discount != null;
-  const discountedPrice = (
-    product.price -
-    product.price * (product.discount / 100)
-  ).toFixed(2);
 
   return (
     <button
@@ -66,11 +63,9 @@ export default function PackageCard({ product }) {
           </div>
         )}
 
-        {hasDiscount && (
-          <span className="absolute px-1.5 font-bold text-sm rounded-sm text-white bottom-1.5 left-1.5 bg-real_primary/80">
-            - {product.discount}%
-          </span>
-        )}
+        <span className="absolute px-1.5 text-sm rounded-sm text-white bottom-1.5 left-1.5 mr-1.5 bg-real_primary/80">
+          {product.usable_number} times
+        </span>
         <span className="absolute px-1.5 py-0.5 text-xs rounded-tr-sm rounded-bl-sm text-white top-0 right-0 bg-gray-600/80">
           Package
         </span>
@@ -95,15 +90,11 @@ export default function PackageCard({ product }) {
           </h5>
         </div>
         <div className="w-full text-right text-primary dark:text-gray-400">
-          <div className="flex flex-wrap items-center gap-2 text-sm">
-            <p
-              className={`text-sm text-gray-600 ${
-                hasDiscount ? "line-through" : "text-red-600"
-              }`}
-            >
-              $ {product.price}
+          <div className="flex flex-wrap items-center text-sm gap-x-2">
+            <p className={`text-sm text-gray-600 line-through`}>
+              $ {product.total_amount}
             </p>
-            {hasDiscount && <p className="text-red-600">$ {discountedPrice}</p>}
+            <p className="text-red-600">$ {product.price}</p>
           </div>
         </div>
       </div>

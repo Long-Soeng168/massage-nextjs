@@ -9,7 +9,7 @@ import { IMAGE_BOOK_URL } from "@/config/env";
 import { ImageDown, ImageIcon, ImageOff, PackageIcon } from "lucide-react";
 
 export default function CustomerPackageCard({ product }) {
-  console.log(product);
+  // console.log(product);
   const { addToCart, cartItems } = usePOSCart();
   const [isPlayAnimation, setIsPlayAnimation] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
@@ -24,14 +24,15 @@ export default function CustomerPackageCard({ product }) {
   };
 
   const handleSelect = () => {
-    // addToCart({
-    //   id: product.id,
-    //   title: product.name,
-    //   image: product.image,
-    //   discount: product?.discount || 0,
-    //   price: product.price,
-    //   type: "package",
-    // });
+    if (product.pivot.usable_number <= 0) return;
+    addToCart({
+      id: product.id,
+      title: product.name,
+      image: product.image,
+      discount: 0,
+      price: 0,
+      type: "use_package",
+    });
     setIsPlayAnimation(true);
     setTimeout(() => {
       setIsPlayAnimation(false);
@@ -39,14 +40,10 @@ export default function CustomerPackageCard({ product }) {
   };
 
   const quantity = isMounted ? getProductQuantity() : 0;
-  const hasDiscount = product?.discount != 0 && product?.discount != null;
-  const discountedPrice = (
-    product.price -
-    product.price * (product?.discount / 100)
-  ).toFixed(2);
 
   return (
     <button
+      disabled={product.pivot.usable_number <= 0}
       onClick={handleSelect}
       className={`flex flex-col justify-start hover:scale-95 transition-all duration-300 h-full bg-white border-2 rounded-md shadow hover:border-primary dark:bg-gray-800 dark:border-gray-700 ${
         quantity > 0 ? "border-primary" : "border-white"
@@ -68,7 +65,10 @@ export default function CustomerPackageCard({ product }) {
         )}
 
         <span className="absolute px-1.5 text-sm rounded-sm text-white bottom-1.5 left-1.5 bg-real_primary/80">
-          Remain : <strong>123</strong>
+          Remain :{" "}
+          <strong>
+            {product?.pivot?.usable_number - getProductQuantity()}
+          </strong>
         </span>
         <span className="absolute px-1.5 py-0.5 text-xs rounded-tr-sm rounded-bl-sm text-white top-0 right-0 bg-gray-600/80">
           Package

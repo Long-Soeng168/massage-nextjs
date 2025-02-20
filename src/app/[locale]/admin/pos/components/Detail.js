@@ -42,11 +42,11 @@ import { usePOSDetailContext } from "@/contexts/POSDetailContext";
 import { useInvoiceContext } from "@/contexts/POSInvoiceContext";
 import { useToast } from "@/hooks/use-toast";
 import { getCustomers } from "@/services/customers-services";
-import { jsx } from "react/jsx-runtime";
 
 export default function Detail({ payments }) {
   const { toast } = useToast();
   const [isOpenPayNow, setIsOpenPayNow] = useState(false);
+  const [isOpenHold, setIsOpenHold] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
   const {
     selectedCustomer,
@@ -209,6 +209,7 @@ export default function Detail({ payments }) {
       setSuccessMessage("Order successfully created.");
       // router.push("/cart/success");
       handleFetchCustomers();
+      setIsOpenPayNow(false);
     } catch (error) {
       setError(error.message);
     } finally {
@@ -276,6 +277,7 @@ export default function Detail({ payments }) {
       setSuccessMessage("Placed in hold success.");
       // router.push("/cart/success");
       handleFetchCustomers();
+      setIsOpenHold(false);
     } catch (error) {
       setError(error.message);
     } finally {
@@ -406,7 +408,34 @@ export default function Detail({ payments }) {
                 <ListRestart /> Reset
               </ShadCNButton>
               {/* Start Hold button */}
-              <Dialog>
+              <Dialog
+                open={isOpenHold}
+                onOpenChange={(state) => {
+                  if (
+                    !selectedCustomer &&
+                    cartItems.some((item) => item.type === "package")
+                  ) {
+                    toast({
+                      title: "Please Select a Customer.",
+                      variant: "destructive",
+                      description: `Customer is required for hold package.`,
+                    });
+                    return;
+                  }
+                  if (
+                    !selectedCustomer &&
+                    cartItems.some((item) => item.type === "use_package")
+                  ) {
+                    toast({
+                      title: "Please Select a Customer.",
+                      variant: "destructive",
+                      description: `Customer is required for use package.`,
+                    });
+                    return;
+                  }
+                  setIsOpenHold(state);
+                }}
+              >
                 <DialogTrigger asChild>
                   <ShadCNButton
                     size="mySize"
@@ -459,9 +488,19 @@ export default function Detail({ payments }) {
                       description: `Customer is required for purchase package.`,
                     });
                     return;
-                  } else {
-                    setIsOpenPayNow(state);
                   }
+                  if (
+                    !selectedCustomer &&
+                    cartItems.some((item) => item.type === "use_package")
+                  ) {
+                    toast({
+                      title: "Please Select a Customer.",
+                      variant: "destructive",
+                      description: `Customer is required for use package.`,
+                    });
+                    return;
+                  }
+                  setIsOpenPayNow(state);
                 }}
               >
                 <DialogTrigger asChild className="w-full">

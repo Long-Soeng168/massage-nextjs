@@ -85,11 +85,17 @@ const DataList = async ({
     <>
       <div className="grid items-start justify-start w-full grid-cols-2 gap-4 px-2 pr-4 my-4 mb-10 sm:grid-cols-3 xl:grid-cols-6 lg:grid-cols-4">
         {products.length > 0 &&
-          products?.map((item, index) => <Card key={index} product={item} />)}
+          products?.map((item, index) => (
+            <Card key={index + item.title} product={item} />
+          ))}
         {services.length > 0 &&
-          services?.map((item, index) => <ServiceCard key={index} product={item} />)}
+          services?.map((item, index) => (
+            <ServiceCard key={index + item.title} product={item} />
+          ))}
         {packages.length > 0 &&
-          packages?.map((item, index) => <PackageCard key={index} product={item} />)}
+          packages?.map((item, index) => (
+            <PackageCard key={index + item.name} product={item} />
+          ))}
       </div>
       <div className="flex items-center justify-between px-2 mb-8">
         <MyPagination

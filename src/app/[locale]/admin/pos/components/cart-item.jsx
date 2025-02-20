@@ -37,7 +37,7 @@ const CartItem = ({ item, isReadOnly = false }) => {
               ${item.type == "product" && "bg-real_primary/80"}
               `}
           >
-            {item.type}
+            {item.type != "use_package" && item.type}
           </span>
         </span>
       </td>
@@ -45,14 +45,24 @@ const CartItem = ({ item, isReadOnly = false }) => {
         <div className="flex-1 shrink-0">
           <p className="text-sm line-clamp-2 shrink-0">{item.title}</p>
           <div className="flex flex-wrap items-center text-sm text-gray-600 line-clamp-1 shrink-0 whitespace-nowrap ">
-            <p
-              className={`text-sm text-gray-600 mr-2 ${
-                hasDiscount ? "line-through" : "text-red-600"
-              }`}
-            >
-              $ {item.price}
-            </p>
-            {hasDiscount && <p className="text-red-600">$ {discountedPrice}</p>}
+            {item.type == "use_package" ? (
+              <span className="text-xs bg-real_primary/80 text-white rounded-sm px-1.5 mr-1.5 py-0.5">
+                Use Package
+              </span>
+            ) : (
+              <>
+                <p
+                  className={`text-sm text-gray-600 mr-2 ${
+                    hasDiscount ? "line-through" : "text-red-600"
+                  }`}
+                >
+                  $ {item.price}
+                </p>
+                {hasDiscount && (
+                  <p className="text-red-600">$ {discountedPrice}</p>
+                )}
+              </>
+            )}
           </div>
         </div>
       </td>

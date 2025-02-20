@@ -100,7 +100,7 @@ export function Holds() {
     setIsDrawerDetailHoldOpen(false);
     clearCart();
     addMultipleToCart(holds[index].items);
-    setSelectedCustomer(holds[index].customer?.id || 0);
+    setSelectedCustomer(holds[index].customer || null);
     setDiscountAmount(holds[index].discount || 0);
     setDiscountType(holds[index].discountType || "percentage");
     handleDelete(holds[index].id);
@@ -298,10 +298,11 @@ export function Holds() {
                   ))}
                 </div>
               )}
-              {
-                !loading && holds?.length == 0 &&
-                <p className="flex items-center justify-center gap-2 text-primary"><ListX /> No Data</p>
-              }
+              {!loading && holds?.length == 0 && (
+                <p className="flex items-center justify-center gap-2 text-primary">
+                  <ListX /> No Data
+                </p>
+              )}
             </div>
           </div>
         </DrawerContent>

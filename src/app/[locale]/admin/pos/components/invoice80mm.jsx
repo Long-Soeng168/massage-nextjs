@@ -11,11 +11,14 @@ const Invoice80mm = ({ invoice, contentRef }) => {
   let products = [];
   let services = [];
   let packages = [];
+  let use_packages = [];
   invoice?.items?.forEach((item) => {
     if (item.type === "package") {
       packages = [...packages, item];
     } else if (item.type === "service") {
       services = [...services, item];
+    } else if (item.type === "use_package") {
+      use_packages = [...use_packages, item];
     } else {
       products = [...products, item];
     }
@@ -73,8 +76,8 @@ const Invoice80mm = ({ invoice, contentRef }) => {
               </p>
               {invoice?.customer?.credit >= 0 && (
                 <p className="text-[10px] text-black">
-                  <strong>Credit Remain:</strong>{" "}
-                  $ {invoice?.customer?.credit || "0"}
+                  <strong>Credit Remain:</strong> ${" "}
+                  {invoice?.customer?.credit || "0"}
                 </p>
               )}
             </div>
@@ -221,6 +224,62 @@ const Invoice80mm = ({ invoice, contentRef }) => {
                   </td>
                   <td className="px-1 py-1 border-[0.5px] border-black">
                     {item.title}
+                  </td>
+                  <td className="px-1 py-1 text-right border-[0.5px] border-black">
+                    {item.quantity}
+                  </td>
+                  <td className="px-1 py-1 text-right border-[0.5px] border-black whitespace-nowrap">
+                    {(item.price - item.price * (item.discount / 100)).toFixed(
+                      2
+                    )}{" "}
+                    $
+                  </td>
+                  <td className="px-1 py-1 text-right border-[0.5px] border-black whitespace-nowrap">
+                    {(
+                      (item.price - item.price * (item.discount / 100)) *
+                      item.quantity
+                    ).toFixed(2)}{" "}
+                    $
+                  </td>
+                </tr>
+              ))}
+              {use_packages?.length > 0 && (
+                <tr>
+                  <td
+                    className="px-1 py-1 text-center border-[0.5px] border-black"
+                    colSpan={5}
+                  >
+                    Use Package
+                  </td>
+                </tr>
+              )}
+              {use_packages?.map((item, index) => (
+                <tr key={item.id} className="border-collapse">
+                  <td className="px-1 py-1 border-[0.5px] border-black">
+                    {index + 1}
+                  </td>
+                  <td className="px-1 py-1 border-[0.5px] border-black">
+                    {item.title}
+                    {invoice.customer.packages?.map((packageItem) => {
+                      if (packageItem.id == item.product_id) {
+                        return (
+                          <span key={packageItem.id} className="text-[10px]">
+                            <br />
+                            <strong>Remain:</strong>{" "}
+                            {invoice.status == 0
+                              ? packageItem.pivot.usable_number - item.quantity
+                              : packageItem.pivot.usable_number}
+                          </span>
+                        );
+                      } else {
+                        return (
+                          <span key={packageItem.id} className="text-[10px]">
+                            <br />
+                            <strong>Remain:</strong> {0}
+                          </span>
+                        );
+                      }
+                    })}
                   </td>
                   <td className="px-1 py-1 text-right border-[0.5px] border-black">
                     {item.quantity}

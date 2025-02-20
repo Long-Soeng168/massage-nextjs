@@ -34,6 +34,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import CustomerPackageCard from "./CustomerPackageCard";
+import { usePOSCart } from "@/contexts/POSContext";
 
 export default function SelectCustomer({
   customers,
@@ -43,70 +44,51 @@ export default function SelectCustomer({
 }) {
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState(selectedCustomer?.id || null);
-
-  const packages = [
-    {
-      id: "1",
-      name: "Package 1",
-      discount: 2,
-      price: "231",
-      type: "package",
-    },
-    {
-      id: "2",
-      name: "Package 2",
-      discount: 2,
-      price: "231",
-      type: "package",
-    },
-  ];
-
+  const { removeUsePackage } = usePOSCart();
   return (
     <div className="flex items-center">
-      <Dialog>
-        <TooltipProvider delayDuration={300}>
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <DialogTrigger asChild>
-                <Button
-                  variant="outline"
-                  role="combobox"
-                  className="overflow-hidden justify-between border-[0.5px] rounded-none"
-                >
-                  <PackageIcon className="opacity-50" />
-                </Button>
-              </DialogTrigger>
-            </TooltipTrigger>
-            <TooltipContent>
-              <p>Customer's Packages</p>
-            </TooltipContent>
-          </Tooltip>
-        </TooltipProvider>
+      {selectedCustomer && (
+        <Dialog>
+          <TooltipProvider delayDuration={300}>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <DialogTrigger asChild>
+                  <Button
+                    variant="outline"
+                    role="combobox"
+                    className="overflow-hidden justify-between border-[0.5px] rounded-none"
+                  >
+                    <PackageIcon className="opacity-50" />
+                  </Button>
+                </DialogTrigger>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>Customer's Packages</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
 
-        <DialogContent>
-          <DialogHeader>
-            <DialogTitle className="flex items-center gap-2">
-              <PackageIcon />
-              {selectedCustomer?.name || 'Customer'}`s Package.
-            </DialogTitle>
-            <DialogDescription>Select Package to use.</DialogDescription>
-            <div className="grid max-h-[60vh] grid-cols-3 gap-2 overflow-y-scroll">
-              <CustomerPackageCard product={packages[0]} />
-              <CustomerPackageCard product={packages[1]} />
-              <CustomerPackageCard product={packages[0]} />
-              <CustomerPackageCard product={packages[1]} />
-              <CustomerPackageCard product={packages[0]} />
-              <CustomerPackageCard product={packages[1]} />
-              <CustomerPackageCard product={packages[0]} />
-              <CustomerPackageCard product={packages[1]} />
-              <CustomerPackageCard product={packages[0]} />
-              <CustomerPackageCard product={packages[1]} />
-              <CustomerPackageCard product={packages[0]} />
-              <CustomerPackageCard product={packages[1]} />
-            </div>
-          </DialogHeader>
-        </DialogContent>
-      </Dialog>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle className="flex items-center gap-2">
+                <PackageIcon />
+                {selectedCustomer?.name || "Customer"}`s Package.
+              </DialogTitle>
+              <DialogDescription>Select Package to use.</DialogDescription>
+              <div className="grid max-h-[60vh] grid-cols-3 gap-2 overflow-y-scroll py-2">
+                {selectedCustomer?.packages?.map((item) => (
+                  <CustomerPackageCard key={item.id} product={item} />
+                ))}
+                {!selectedCustomer?.packages && (
+                  <div className="flex items-center justify-center col-span-3 text-gray-500">
+                    No package found.
+                  </div>
+                )}
+              </div>
+            </DialogHeader>
+          </DialogContent>
+        </Dialog>
+      )}
 
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
@@ -132,6 +114,7 @@ export default function SelectCustomer({
                   key={0}
                   value={0}
                   onSelect={(currentValue) => {
+                    removeUsePackage();
                     setValue(0);
                     setSelectedCustomer(null);
                     setSelectedDefaultPayment();
@@ -157,12 +140,14 @@ export default function SelectCustomer({
                       setSelectedCustomer(
                         currentValue == value ? null : customer
                       );
+                      removeUsePackage();
                       setOpen(false);
                     }}
                   >
                     <span className="flex items-center gap-2">
                       {customer.name}
-                      {customer.credit > 0 && (
+                      <span className="hidden">{customer.phone}</span>
+                      {customer.credit && (
                         <span className="px-1.5 whitespace-nowrap text-xs text-white rounded-full bg-real_primary">
                           $ {Number(customer.credit).toFixed(0)}
                         </span>

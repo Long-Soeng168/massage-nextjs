@@ -15,12 +15,12 @@ export default function GlobalNotFound() {
           <p className="mt-2 text-lg text-gray-600">
             Sorry, the page you're looking for doesn't exist or has been moved.
           </p>
-          <Link
+          {/* <Link
             href="/"
             className="inline-block px-8 py-3 mt-6 text-base font-semibold text-white transition duration-300 ease-in-out transform bg-black rounded-lg shadow-md hover:bg-gray-800 hover:scale-105"
           >
             Go Back Home
-          </Link>
+          </Link> */}
         </div>
         <div className="mt-10 md:mt-0">
           <Image

@@ -9,7 +9,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { BASE_API_URL, BASE_BACKEND_URL } from "@/config/env"; 
+import { BASE_API_URL, BASE_BACKEND_URL } from "@/config/env";
 import {
   AlignLeft,
   Layout,
@@ -56,6 +56,11 @@ const POSHeaderMenu = ({ className }) => {
       }
     } catch (error) {
       console.error("Logout error", error);
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
+
+      // Redirect to the login page
+      router.push("/login");
     }
   };
   return (
@@ -108,7 +113,6 @@ const POSHeaderMenu = ({ className }) => {
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
-      
     </div>
   );
 };

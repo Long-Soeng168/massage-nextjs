@@ -17,13 +17,14 @@ function cartReducer(state, action) {
   switch (action.type) {
     case "ADD_TO_CART": {
       const itemExists = state.cartItems?.find(
-        (item) => item.id === action.payload.id
+        (item) =>
+          item.id === action.payload.id && item.type === action.payload.type
       );
       if (itemExists) {
         return {
           ...state,
           cartItems: state.cartItems?.map((item) =>
-            item.id === action.payload.id
+            item.id === action.payload.id && item.type === action.payload.type
               ? { ...item, quantity: item.quantity + 1 }
               : item
           ),
@@ -57,6 +58,13 @@ function cartReducer(state, action) {
         ...state,
         cartItems: state.cartItems?.filter(
           (item) => item.id !== action.payload.id
+        ),
+      };
+    case "REMOVE_USE_PACKAGE":
+      return {
+        ...state,
+        cartItems: state.cartItems?.filter(
+          (item) => item.type !== "use_package"
         ),
       };
     case "UPDATE_QUANTITY":
@@ -125,6 +133,10 @@ export function POSCartProvider({ children }) {
     dispatch({ type: "REMOVE_FROM_CART", payload: product });
     // showDialog(`${product.title} has been removed from the cart.`);
   };
+  const removeUsePackage = () => {
+    dispatch({ type: "REMOVE_USE_PACKAGE" });
+    // showDialog(`${product.title} has been removed from the cart.`);
+  };
 
   const handleQuantityChange = (id, delta) => {
     dispatch({
@@ -157,6 +169,7 @@ export function POSCartProvider({ children }) {
         addToCart,
         addMultipleToCart,
         removeFromCart,
+        removeUsePackage,
         clearCart,
         handleQuantityChange,
         getTotalItemCount,
