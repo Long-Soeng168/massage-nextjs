@@ -54,8 +54,8 @@ export default function PackageCard({ product }) {
             className=" w-full rounded-tl-sm rounded-tr-sm h-full aspect-[1/1] object-cover"
             src={`${IMAGE_BOOK_URL}thumb/${product.image}`}
             alt={product.name || "Product Image"}
-            width={100}
-            height={100}
+            width={200}
+            height={200}
           />
         ) : (
           <div className="flex items-center justify-center w-full border rounded-sm bg-secondary aspect-square">

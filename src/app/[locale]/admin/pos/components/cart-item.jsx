@@ -19,8 +19,8 @@ const CartItem = ({ item, isReadOnly = false }) => {
           {item.image ? (
             <Image
               className="object-cover w-full h-full rounded-sm aspect-square"
-              height={100}
-              width={100}
+              height={200}
+              width={200}
               alt=""
               src={`${IMAGE_BOOK_URL}thumb/${item.image}`}
             />
