@@ -39,7 +39,8 @@ function cartReducer(state, action) {
       const updatedCartItems = [...state.cartItems];
       action.payload.forEach((newItem) => {
         const itemExists = updatedCartItems.find(
-          (item) => item.id === newItem.product_id
+          (item) =>
+            item.id === newItem.product_id && item.type === action.payload.type
         );
         if (itemExists) {
           itemExists.quantity += newItem.quantity || 1; // Default to 1 if quantity is not provided

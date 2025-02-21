@@ -19,7 +19,9 @@ export default function CustomerPackageCard({ product }) {
   }, []);
 
   const getProductQuantity = () => {
-    const cartItem = cartItems?.find((item) => item.id === product.id);
+    const cartItem = cartItems?.find(
+      (item) => item.id === product.id && item.type === "use_package"
+    );
     return cartItem ? cartItem.quantity : 0;
   };
 

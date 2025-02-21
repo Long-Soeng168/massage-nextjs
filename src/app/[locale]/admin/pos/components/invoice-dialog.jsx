@@ -68,20 +68,11 @@ const InvoiceDialog = () => {
             <DialogDescription />
           </DialogHeader>
           {printSize === "80" ? (
-            <Invoice80mm
-              contentRef={contentRef}
-              invoice={invoice}
-            />
+            <Invoice80mm contentRef={contentRef} invoice={invoice} />
           ) : printSize === "quote" ? (
-            <InvoiceQuotation
-              contentRef={contentRef}
-              invoice={invoice}
-            />
+            <InvoiceQuotation contentRef={contentRef} invoice={invoice} />
           ) : (
-            <InvoiceA4
-              contentRef={contentRef}
-              invoice={invoice}
-            />
+            <InvoiceA4 contentRef={contentRef} invoice={invoice} />
           )}
 
           <div className="flex justify-end gap-2">
@@ -124,7 +115,7 @@ const InvoiceDialog = () => {
             >
               A4
             </button>
-            {invoice?.status !== 1 && (
+            {/* {invoice?.status !== 1 && (
               <button
                 size="icon"
                 onClick={() => setPrintSize("quote")}
@@ -136,7 +127,7 @@ const InvoiceDialog = () => {
               >
                 Quote
               </button>
-            )}
+            )} */}
           </div>
         </DialogContent>
       </Dialog>
