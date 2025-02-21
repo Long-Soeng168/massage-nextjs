@@ -543,8 +543,10 @@ export default function Detail({ payments }) {
                         </p>
                       </div>
                     </div>
-                    <p className="pt-2 text-destructive">
-                      Customer: {selectedCustomer?.name || "N/A"} | Credit : ${" "}
+                    <p className="pt-2 text-red-400">
+                      <span className="text-primary">Customer: </span>{" "}
+                      {selectedCustomer?.name || "N/A"}{" "}
+                      <span className="text-primary">| Credit :</span> ${" "}
                       {Number(selectedCustomer?.credit) || 0}
                     </p>
                     {/* Payment Method */}
