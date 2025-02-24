@@ -6,7 +6,7 @@ import LottieAnimation from "../../../../../components/ui/lottie-animation";
 import animationData from "/public/images/animations/success-animation2.json";
 import { usePOSCart } from "@/contexts/POSContext";
 import { IMAGE_BOOK_URL } from "@/config/env";
-import { ImageDown, ImageIcon, ImageOff } from "lucide-react";
+import { HandPlatterIcon, ImageDown, ImageIcon, ImageOff } from "lucide-react";
 
 export default function ServiceCard({ product }) {
   const { addToCart, cartItems } = usePOSCart();
@@ -64,7 +64,7 @@ export default function ServiceCard({ product }) {
           />
         ) : (
           <div className="flex items-center justify-center w-full border rounded-sm bg-secondary aspect-square">
-            <ImageIcon size={50} className="text-border" />
+            <HandPlatterIcon size={50} className="text-border" />
           </div>
         )}
 
