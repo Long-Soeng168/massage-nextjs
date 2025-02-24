@@ -47,12 +47,12 @@ const Invoice80mm = ({ invoice, contentRef }) => {
             <p className="text-[10px] text-black">
               <strong>Email:</strong> {APP_EMAIL}
             </p>
-            <p className="text-[10px] text-black">
+            {/* <p className="text-[10px] text-black">
               <strong>Website:</strong>{" "}
               <a href={APP_WEBSITE} className="text-black hover:underline">
                 {APP_WEBSITE}
               </a>
-            </p>
+            </p> */}
           </div>
         </div>
 

@@ -48,12 +48,12 @@ const InvoiceA4 = ({ invoice, contentRef }) => {
             <p className="text-sm text-gray-600">
               <strong>Email:</strong> {APP_EMAIL}
             </p>
-            <p className="text-sm text-gray-600">
+            {/* <p className="text-sm text-gray-600">
               <strong>Website:</strong>{" "}
               <a href={APP_WEBSITE} className="text-blue-500 hover:underline">
                 {APP_WEBSITE}
               </a>
-            </p>
+            </p> */}
           </div>
         </div>
 
