@@ -79,7 +79,7 @@ export default function SelectCustomer({
                 {selectedCustomer?.packages?.map((item) => (
                   <CustomerPackageCard key={item.id} product={item} />
                 ))}
-                {!selectedCustomer?.packages && (
+                {selectedCustomer?.packages?.length == 0 && (
                   <div className="flex items-center justify-center col-span-3 text-gray-500">
                     No package found.
                   </div>

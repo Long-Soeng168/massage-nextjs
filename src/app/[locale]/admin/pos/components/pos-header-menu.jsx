@@ -82,12 +82,12 @@ const POSHeaderMenu = ({ className }) => {
             </span>
           </DropdownMenuLabel>
           <DropdownMenuSeparator />
-          <DropdownMenuItem>
+          {/* <DropdownMenuItem>
             <Link href={`/`} className="flex items-center gap-1">
               <PanelTop size={18} />
               Frontend Page
             </Link>
-          </DropdownMenuItem>
+          </DropdownMenuItem> */}
           <DropdownMenuItem>
             <Link href={BASE_BACKEND_URL} className="flex items-center gap-1">
               <PanelsTopLeft size={18} />
