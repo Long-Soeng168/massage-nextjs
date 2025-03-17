@@ -6,6 +6,7 @@ import { Label } from "@/components/ui/label";
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import { BASE_API_URL } from "@/config/env";
+import { useToast } from "@/hooks/use-toast";
 
 const validateForm = (email, password) => {
   const errors = {};
@@ -58,7 +59,9 @@ export function LoginForm({ className, ...props }) {
         // Handle server-side errors more gracefully
         const errorMessage =
           data.message || `Error ${response.status}: ${response.statusText}`;
-        setErrors({ general: errorMessage });
+        setErrors({ general: "Invalid Credetial" });
+        setPassword("");
+        // console.log("Hello");
         return;
       }
 
@@ -120,6 +123,9 @@ export function LoginForm({ className, ...props }) {
           />
           {errors.password && (
             <p className="text-sm text-red-500">{errors.password}</p>
+          )}
+          {errors.general && (
+            <p className="text-sm text-red-500">{errors.general}</p>
           )}
         </div>
         <Button
