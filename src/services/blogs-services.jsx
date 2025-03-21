@@ -10,7 +10,7 @@ export async function getBlogs({categoryId, perPage, currentPage, search} = {}) 
   try {
     const response = await fetch(url, {
       next: {
-        revalidate: 3600
+        revalidate: 120
       }
     });
     if(response.status == 404){
@@ -31,7 +31,7 @@ export async function getBlog(id) {
   try {
     const response = await fetch(url, {
       next: {
-        revalidate: 3600
+        revalidate: 120
       }
     });
     if(response.status == 404){
@@ -52,7 +52,7 @@ export async function getBlogCategories() {
   try {
     const response = await fetch(url, {
       next: {
-        revalidate: 3600
+        revalidate: 120
       }
     });
     if (!response.ok) {

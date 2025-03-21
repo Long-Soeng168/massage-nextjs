@@ -5,7 +5,7 @@ export async function getNewArrivalBooks() {
   try {
     const response = await fetch(url, {
       next: {
-        revalidate: 3600
+        revalidate: 120
       }
     });
     if (!response.ok) {
@@ -26,7 +26,7 @@ export async function getBestSellingBooks({ limit } = {}) {
   try {
     const response = await fetch(url, {
       next: {
-        revalidate: 3600
+        revalidate: 120
       }
     });
     if (!response.ok) {
@@ -79,7 +79,7 @@ export async function getBooks({
   try {
     const response = await fetch(url, {
       next: {
-        revalidate: 3600
+        revalidate: 120
       }
     });
     if (!response.ok) {
@@ -130,7 +130,7 @@ export async function getServices({
   try {
     const response = await fetch(url, {
       next: {
-        revalidate: 3600
+        revalidate: 120
       }
     });
     if (!response.ok) {
@@ -181,7 +181,7 @@ export async function getPackages({
   try {
     const response = await fetch(url, {
       next: {
-        revalidate: 3600
+        revalidate: 120
       }
     });
     if (!response.ok) {
@@ -231,7 +231,7 @@ export async function getKidBooks({
   try {
     const response = await fetch(url, {
       next: {
-        revalidate: 3600
+        revalidate: 120
       }
     });
     if (!response.ok) {
@@ -249,7 +249,7 @@ export async function getBook({ id }) {
   try {
     const response = await fetch(url, {
       next: {
-        revalidate: 3600
+        revalidate: 120
       }
     });
     if(response.status == 404){

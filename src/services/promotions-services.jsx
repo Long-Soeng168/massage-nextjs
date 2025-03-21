@@ -5,7 +5,7 @@ export async function getPromotions() {
   try {
     const response = await fetch(url, {
       next: {
-        revalidate: 3600
+        revalidate: 120
       }
     });
     if (!response.ok) {
