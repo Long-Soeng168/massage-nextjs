@@ -74,12 +74,12 @@ const Invoice80mm = ({ invoice, contentRef }) => {
               <p className="text-[10px] text-black">
                 <strong>Telephone:</strong> {invoice?.customer?.phone || "N/A"}
               </p>
-              {invoice?.customer?.credit >= 0 && (
+              {/* {invoice?.customer?.credit >= 0 && ( */}
                 <p className="text-[10px] text-black">
                   <strong>Credit Remain:</strong> ${" "}
                   {invoice?.customer?.credit || "0"}
                 </p>
-              )}
+              {/* )} */}
             </div>
             <div className="flex flex-1 flex-col gap-0.5">
               <p className="text-[10px] text-black">
