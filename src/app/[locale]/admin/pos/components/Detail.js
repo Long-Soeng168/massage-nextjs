@@ -574,22 +574,24 @@ export default function Detail({ payments }) {
                                 });
                                 return;
                               }
-                              if (
-                                selectedCustomer?.credit >
-                                Number(getTotalAfterDiscountDollar())
-                              ) {
-                                setSelectedPayment(0);
-                                return;
-                              }
-                              toast({
-                                title: "Customer don't have enough credit",
-                                variant: "destructive",
-                                description: `Customer Credit: $ ${Number(
-                                  selectedCustomer?.credit
-                                )} | Total Price: $ ${Number(
-                                  getTotalAfterDiscountDollar()
-                                )}`,
-                              });
+                              setSelectedPayment(0);
+                              return;
+                              // if (
+                              //   selectedCustomer?.credit >
+                              //   Number(getTotalAfterDiscountDollar())
+                              // ) {
+                              //   setSelectedPayment(0);
+                              //   return;
+                              // }
+                              // toast({
+                              //   title: "Customer don't have enough credit",
+                              //   variant: "destructive",
+                              //   description: `Customer Credit: $ ${Number(
+                              //     selectedCustomer?.credit
+                              //   )} | Total Price: $ ${Number(
+                              //     getTotalAfterDiscountDollar()
+                              //   )}`,
+                              // });
                             }}
                             variant={`${
                               selectedPayment == 0 ? "default" : "outline"

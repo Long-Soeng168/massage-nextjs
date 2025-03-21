@@ -19,6 +19,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { RecentInvoice } from "./recent-invoice";
 
 const POSHeaderMenu = ({ className }) => {
   const token = localStorage.getItem("token");

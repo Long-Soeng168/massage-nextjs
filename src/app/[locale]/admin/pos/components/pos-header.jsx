@@ -5,6 +5,7 @@ import OrderButton from "./order-button";
 import { Holds } from "./holds";
 import { APP_NAME, APP_NAME_KH } from "@/config/website-detail";
 import SelectItemType from "./select-item-type";
+import { RecentInvoice } from "./recent-invoice";
 
 const POSHeader = ({ customers, payments }) => {
   return (
@@ -40,15 +41,16 @@ const POSHeader = ({ customers, payments }) => {
             <div className="flex items-center gap-2 mr-8 md:hidden">
               <POSHeaderMenu />
               <Link href={`#`}>
-                <p className="text-base font-bold max-w-26 text-primary">
+                <p className="text-base font-bold max-w-26 line-clamp-2 text-primary">
                   {APP_NAME_KH}
                 </p>
-                <p className="text-sm font-semibold max-w-26 text-primary">
+                <p className="text-sm font-semibold line-clamp-2 max-w-26 text-primary">
                   {APP_NAME}
                 </p>
               </Link>
             </div>
             <div className="flex items-center gap-2">
+              <RecentInvoice />
               <Holds />
               <OrderButton customers={customers} payments={payments} />
             </div>

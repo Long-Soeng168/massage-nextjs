@@ -15,6 +15,21 @@ export async function getHolds() {
     return null;
   }
 }
+export async function getRecentInvoices() {
+  const url = BASE_API_URL + `/recent_invoices`;
+  try {
+    const response = await fetch(url, {
+      cache: 'no-cache'
+    });
+    if (!response.ok) {
+      throw new Error(`Failed to fetch recent invoice : ${response.statusText}`);
+    }
+    return await response.json();
+  } catch (error) {
+    console.log(error.message);
+    return null;
+  }
+}
 export async function deleteHold(id, token) {
   const url = `${BASE_API_URL}/holds/${id}`;
   try {
