@@ -25,7 +25,7 @@ export default function POSSearch({ placeholder }) {
 
   return (
     <>
-      <div className="relative flex flex-1">
+      <div className="relative flex flex-1 min-w-60">
         <div className="absolute inset-y-0 flex items-center pointer-events-none start-0 ps-3">
           <Search />
         </div>

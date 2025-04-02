@@ -52,8 +52,8 @@ const AdminLayout = ({ children }) => {
       } catch (error) {
         console.error("Error fetching user:", error);
         setLoading(false);
-        localStorage.removeItem("token");
-        localStorage.removeItem("user");
+        // localStorage.removeItem("token");
+        // localStorage.removeItem("user");
         router.push("/login");
       }
     };

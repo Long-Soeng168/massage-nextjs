@@ -6,6 +6,7 @@ import { Holds } from "./holds";
 import { APP_NAME, APP_NAME_KH } from "@/config/website-detail";
 import SelectItemType from "./select-item-type";
 import { RecentInvoice } from "./recent-invoice";
+import { CustomerDialog } from "./customer-dialog";
 
 const POSHeader = ({ customers, payments }) => {
   return (
@@ -17,10 +18,10 @@ const POSHeader = ({ customers, payments }) => {
             <div className="items-center hidden gap-2 mr-8 md:flex">
               <POSHeaderMenu />
               <Link href={`#`}>
-                <p className="text-base font-bold max-w-26 text-primary">
+                <p className="text-xs font-bold max-w-10 text-primary">
                   {APP_NAME_KH}
                 </p>
-                <p className="text-sm font-semibold max-w-26 text-primary">
+                <p className="text-xs font-semibold max-w-10 text-primary">
                   {APP_NAME}
                 </p>
               </Link>
@@ -40,16 +41,17 @@ const POSHeader = ({ customers, payments }) => {
           <div className="flex items-center justify-between w-full gap-2 md:w-auto md:order-3">
             <div className="flex items-center gap-2 mr-8 md:hidden">
               <POSHeaderMenu />
-              <Link href={`#`}>
-                <p className="text-base font-bold max-w-26 line-clamp-2 text-primary">
+              <Link href={`/admin/pos`}>
+                <p className="text-xs font-bold max-w-24 line-clamp-2 text-primary">
                   {APP_NAME_KH}
                 </p>
-                <p className="text-sm font-semibold line-clamp-2 max-w-26 text-primary">
+                <p className="text-xs font-semibold line-clamp-2 max-w-24 text-primary">
                   {APP_NAME}
                 </p>
               </Link>
             </div>
             <div className="flex items-center gap-2">
+              <CustomerDialog />
               <RecentInvoice />
               <Holds />
               <OrderButton customers={customers} payments={payments} />
