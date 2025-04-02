@@ -135,6 +135,7 @@ export function CustomerDialog() {
       setCustomerCredit("");
       setCustomerErrors({});
       setIsSubmitNewCustomer(false);
+      setIsOpenAddNewCustomer(false);
 
       // Refresh customer list after successful submission
       fetchHolds(); // Call this if you have a function to update the customer list
