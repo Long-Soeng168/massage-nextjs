@@ -326,16 +326,20 @@ const InvoiceA4 = ({ invoice, contentRef }) => {
           </table>
         </div>
 
+        <div className="text-sm text-center">
+          <p>Thank you for your purchase!</p>
+        </div>
+
         {/* Footer Section */}
         <div>
           {/* Payment Methods Section */}
-          <div
+          {/* <div
             className="space-y-2"
             dangerouslySetInnerHTML={{ __html: APP_PAYMENT_MAYTHOD }}
-          ></div>
+          ></div> */}
 
           {/* Divider */}
-          <div className="flex flex-wrap gap-4 mt-10 text-center">
+          {/* <div className="flex flex-wrap gap-4 mt-10 text-center">
             <div className="flex-1">
               <p className="text-sm text-gray-700">
                 <strong>ហត្ថលេខាអតិថិជន</strong>
@@ -354,7 +358,7 @@ const InvoiceA4 = ({ invoice, contentRef }) => {
               </p>
               <hr className="mx-4 border-black mt-14" />
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
