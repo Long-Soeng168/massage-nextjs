@@ -78,10 +78,10 @@ const InvoiceA4 = ({ invoice, contentRef }) => {
               </p>
 
               {/* {invoice?.customer?.credit >= 0 && ( */}
-                <p className="text-sm text-black">
-                  <strong>Credit Remain:</strong> ${" "}
-                  {invoice?.customer?.credit || "0"}
-                </p>
+              <p className="text-sm text-black">
+                <strong>Credit Remain:</strong> ${" "}
+                {invoice?.customer?.credit || "0"}
+              </p>
               {/* )} */}
             </div>
             <div className="flex-1">
@@ -111,6 +111,11 @@ const InvoiceA4 = ({ invoice, contentRef }) => {
               {invoice?.paymentTypeId == 0 && (
                 <p className="text-sm text-black">
                   <strong>Pay By:</strong> Credit
+                </p>
+              )}
+               {invoice?.user?.name && (
+                <p className="text-sm text-black">
+                  <strong>Seller:</strong> {invoice?.user?.name || "N/A"}
                 </p>
               )}
             </div>
@@ -326,10 +331,6 @@ const InvoiceA4 = ({ invoice, contentRef }) => {
           </table>
         </div>
 
-        <div className="text-sm text-center">
-          <p>Thank you for your purchase!</p>
-        </div>
-
         {/* Footer Section */}
         <div>
           {/* Payment Methods Section */}
@@ -337,28 +338,68 @@ const InvoiceA4 = ({ invoice, contentRef }) => {
             className="space-y-2"
             dangerouslySetInnerHTML={{ __html: APP_PAYMENT_MAYTHOD }}
           ></div> */}
+          <div class="p-4 space-y-4">
+            <p className="font-semibold">
+              <span class="font-bold underline">Note : </span>All goods sold are not
+              refundable.
+            </p>
+
+            <div class="flex items-center gap-2">
+              <div class="w-4 h-4 bg-blue-500 rounded"></div>
+              <p>
+                <span class="font-bold">PPC Bank</span> : 1-110-00021880-8
+              </p>
+            </div>
+
+            <div class="flex items-center gap-2">
+              <div class="w-4 h-4 bg-blue-500 rounded"></div>
+              <p>
+                <span class="font-bold">PPC Name</span> : U2BE,BEAUTY CLINIC
+              </p>
+            </div>
+
+            <div class="flex items-center gap-2">
+              <div class="w-4 h-4 bg-blue-500 rounded"></div>
+              <p>
+                <span class="font-bold">Telegram</span> : 069 99 00 62 / 089 99
+                00 62
+              </p>
+            </div>
+
+            <div class="flex items-center gap-2">
+              <div class="w-4 h-4 bg-blue-500 rounded"></div>
+              <p>
+                <span class="font-bold">Facebook</span> : U2BE,Your Beauty
+                Clinic
+              </p>
+            </div>
+          </div>
 
           {/* Divider */}
-          {/* <div className="flex flex-wrap gap-4 mt-10 text-center">
+          <div className="flex flex-wrap gap-4 mt-10 text-center">
             <div className="flex-1">
-              <p className="text-sm text-gray-700">
+              {/* <p className="text-sm text-gray-700">
                 <strong>ហត្ថលេខាអតិថិជន</strong>
-              </p>
+              </p> */}
               <p className="text-sm text-gray-700">
-                <strong>Customer</strong>
+                <strong>Issued By</strong>
               </p>
               <hr className="mx-4 border-black mt-14" />
             </div>
             <div className="flex-1">
-              <p className="text-sm text-gray-700">
+              {/* <p className="text-sm text-gray-700">
                 <strong>ហត្ថលេខាអ្នកលក់</strong>
-              </p>
+              </p> */}
               <p className="text-sm text-gray-700">
-                <strong>Authorized</strong>
+                <strong>Customer Signature</strong>
               </p>
               <hr className="mx-4 border-black mt-14" />
             </div>
-          </div> */}
+          </div>
+
+          <div className="text-sm text-center mt-4">
+            <p>អរគុណ សម្រាប់ការបញ្ជាទិញជាមួយ U2BE,Your Beauty Clinic!</p>
+          </div>
         </div>
       </div>
     </div>

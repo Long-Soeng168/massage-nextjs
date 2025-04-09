@@ -46,7 +46,7 @@ const OrderButton = ({customers, payments}) => {
             className="relative flex items-center border-[0.5px] h-11"
           >
             <ListChecksIcon />
-            <span className="ml-2">Orders</span>
+            <span className="ml-2 hidden lg:inline">Orders</span>
             {isHydrated && (
               <span className="absolute px-1.5 text-sm font-bold text-black bg-yellow-400 rounded-full right-2 -top-2">
                 {cartItems?.length || 0}

@@ -75,10 +75,10 @@ const Invoice80mm = ({ invoice, contentRef }) => {
                 <strong>Telephone:</strong> {invoice?.customer?.phone || "N/A"}
               </p>
               {/* {invoice?.customer?.credit >= 0 && ( */}
-                <p className="text-[10px] text-black">
-                  <strong>Credit Remain:</strong> ${" "}
-                  {invoice?.customer?.credit || "0"}
-                </p>
+              <p className="text-[10px] text-black">
+                <strong>Credit Remain:</strong> ${" "}
+                {invoice?.customer?.credit || "0"}
+              </p>
               {/* )} */}
             </div>
             <div className="flex flex-1 flex-col gap-0.5">
@@ -108,6 +108,11 @@ const Invoice80mm = ({ invoice, contentRef }) => {
               {invoice?.paymentTypeId == 0 && (
                 <p className="text-[10px] text-black">
                   <strong>Pay By:</strong> Credit
+                </p>
+              )}
+              {invoice?.user?.name && (
+                <p className="text-[10px] text-black">
+                  <strong>Seller:</strong> {invoice?.user?.name || "N/A"}
                 </p>
               )}
             </div>
@@ -331,9 +336,41 @@ const Invoice80mm = ({ invoice, contentRef }) => {
           </table>
         </div>
 
+        <div class="max-w-[80mm] text-sm p-2 space-y-2 text-xs">
+          <p class="font-semibold leading-tight text-xs">
+            <span class="font-bold underline">Note:</span> All goods sold are
+            not refundable.
+          </p>
+
+          <div class="flex items-start gap-2">
+            <p class="leading-tight">
+              <span class="font-bold">PPC Bank</span>: 1-110-00021880-8
+            </p>
+          </div>
+
+          <div class="flex items-start gap-2">
+            <p class="leading-tight">
+              <span class="font-bold">PPC Name</span>: U2BE, BEAUTY CLINIC
+            </p>
+          </div>
+
+          <div class="flex items-start gap-2">
+            <p class="leading-tight">
+              <span class="font-bold">Telegram</span>: 069 99 00 62 / 089 99 00
+              62
+            </p>
+          </div>
+
+          <div class="flex items-start gap-2">
+            <p class="leading-tight">
+              <span class="font-bold">Facebook</span>: U2BE, Your Beauty Clinic
+            </p>
+          </div>
+        </div>
+
         {/* Footer Section */}
-        <div className="text-sm text-center">
-          <p>Thank you for your purchase!</p>
+        <div className="text-xs text-center mt-4">
+          <p>អរគុណ សម្រាប់ការបញ្ជាទិញជាមួយ U2BE,Your Beauty Clinic!</p>
         </div>
       </div>
     </div>

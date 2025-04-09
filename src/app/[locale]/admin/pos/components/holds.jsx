@@ -140,7 +140,7 @@ export function Holds() {
           <Button variant="outline" className="relative h-11 border-[0.5px]">
             <span className="flex items-center gap-1">
               <ListEnd className="text-primary" />
-              <span>Holds</span>
+              <span className="hidden lg:inline">Holds</span>
             </span>
             {/* {holds?.length > 0 && (
               <span className="absolute px-1.5 bg-yellow-400 rounded-full right-0.5 -top-2 text-xs font-bold">

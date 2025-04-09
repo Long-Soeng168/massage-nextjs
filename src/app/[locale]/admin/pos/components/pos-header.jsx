@@ -17,7 +17,7 @@ const POSHeader = ({ customers, payments }) => {
           <div className="flex items-center justify-center flex-1 order-2 gap-4 ">
             <div className="items-center hidden gap-2 mr-8 md:flex">
               <POSHeaderMenu />
-              <Link href={`#`}>
+              <Link href={`/admin/pos`} >
                 <p className="text-xs font-bold max-w-10 text-primary">
                   {APP_NAME_KH}
                 </p>
@@ -41,7 +41,7 @@ const POSHeader = ({ customers, payments }) => {
           <div className="flex items-center justify-between w-full gap-2 md:w-auto md:order-3">
             <div className="flex items-center gap-2 mr-8 md:hidden">
               <POSHeaderMenu />
-              <Link href={`/admin/pos`}>
+              <Link href={`/admin/pos`} className="hidden lg:inline">
                 <p className="text-xs font-bold max-w-24 line-clamp-2 text-primary">
                   {APP_NAME_KH}
                 </p>
