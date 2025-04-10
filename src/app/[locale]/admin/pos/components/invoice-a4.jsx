@@ -39,7 +39,7 @@ const InvoiceA4 = ({ invoice, contentRef }) => {
             src={APP_LOGO}
             className="object-contain w-48 h-full"
           />
-          <div className="flex flex-col justify-center h-full text-start">
+          <div className="flex flex-col flex-1 items-center justify-center h-full text-start">
             <p className="text-3xl font-bold text-gray-800">{APP_NAME_KH}</p>
             <p className="text-3xl font-bold text-gray-800">{APP_NAME}</p>
             <p className="mt-2 text-sm text-gray-600">
