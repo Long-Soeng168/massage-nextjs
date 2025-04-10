@@ -84,7 +84,7 @@ const InvoiceA4 = ({ invoice, contentRef }) => {
               </p>
               {/* )} */}
             </div>
-            <div className="flex-1">
+            <div className="flex items-end flex-1 flex-col gap-0.5">
               <p className="text-sm text-gray-700">
                 <strong>No:</strong> #
                 {new Intl.NumberFormat("en", {
@@ -93,7 +93,7 @@ const InvoiceA4 = ({ invoice, contentRef }) => {
                 }).format(invoice.id)}
               </p>
               <p className="text-sm text-gray-700">
-                <strong>Date:</strong>
+                <strong>Date: </strong>
                 {invoice?.created_at &&
                   new Date(invoice.created_at).toLocaleDateString("en-GB", {
                     year: "numeric",
@@ -105,17 +105,17 @@ const InvoiceA4 = ({ invoice, contentRef }) => {
               </p>
               {invoice?.payment?.name && (
                 <p className="text-sm text-black">
-                  <strong>Pay By:</strong> {invoice?.payment?.name || "N/A"}
+                  <strong>Pay By: </strong> {invoice?.payment?.name || "N/A"}
                 </p>
               )}
               {invoice?.paymentTypeId == 0 && (
                 <p className="text-sm text-black">
-                  <strong>Pay By:</strong> Credit
+                  <strong>Pay By: </strong> Credit
                 </p>
               )}
                {invoice?.user?.name && (
                 <p className="text-sm text-black">
-                  <strong>Seller:</strong> {invoice?.user?.name || "N/A"}
+                  <strong>Seller: </strong> {invoice?.user?.name || "N/A"}
                 </p>
               )}
             </div>

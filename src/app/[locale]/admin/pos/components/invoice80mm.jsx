@@ -81,7 +81,7 @@ const Invoice80mm = ({ invoice, contentRef }) => {
               </p>
               {/* )} */}
             </div>
-            <div className="flex flex-1 flex-col gap-0.5">
+            <div className="flex items-end flex-1 flex-col gap-0.5">
               <p className="text-[10px] text-black">
                 <strong>No:</strong> #
                 {new Intl.NumberFormat("en", {
