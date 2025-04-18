@@ -120,7 +120,7 @@ const Invoice80mm = ({ invoice, contentRef }) => {
         </div>
 
         {/* Table Section */}
-        <div className="mb-6 overflow-x-auto">
+        <div className="overflow-x-auto">
           <table className="w-full text-[10px] border-[0.5px] border-black">
             <thead className="bg-gray-100">
               <tr>
@@ -336,7 +336,10 @@ const Invoice80mm = ({ invoice, contentRef }) => {
           </table>
         </div>
 
-        <div class="max-w-[80mm] text-sm p-2 space-y-2 text-xs">
+        <div class="max-w-[80mm] p-2 space-y-2 text-xs">
+          <div className="text-center">
+            <img src="/ppc_bank_qr.jpeg" className="w-[50%]" alt="qr" />
+          </div>
           <p class="font-semibold leading-tight text-xs">
             <span class="font-bold underline">Note:</span> All goods sold are
             not refundable.
@@ -363,14 +366,15 @@ const Invoice80mm = ({ invoice, contentRef }) => {
 
           <div class="flex items-start gap-2">
             <p class="leading-tight">
-              <span class="font-bold">Facebook</span>: U2BE, Your Beauty Clinic
+              <span class="font-bold">Facebook</span>: U2BE Beauty Clinic
+              ឯកទេសព្យាបាលមុនដោយមិនញេច
             </p>
           </div>
         </div>
 
         {/* Footer Section */}
         <div className="text-xs text-center mt-4">
-          <p>អរគុណ សម្រាប់ការបញ្ជាទិញជាមួយ U2BE,Your Beauty Clinic!</p>
+          <p>អរគុណ សម្រាប់ការបញ្ជាទិញ</p>
         </div>
       </div>
     </div>
