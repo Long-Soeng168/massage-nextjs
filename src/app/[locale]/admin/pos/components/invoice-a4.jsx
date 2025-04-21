@@ -338,21 +338,21 @@ const InvoiceA4 = ({ invoice, contentRef }) => {
             className="space-y-2"
             dangerouslySetInnerHTML={{ __html: APP_PAYMENT_MAYTHOD }}
           ></div> */}
-          <div className="text-center">
-            <img src="/ppc_bank_qr.jpeg" className="w-[40mm]" alt="qr" />
-          </div>
-          <div class="p-4 space-y-4">
-            <p className="font-semibold">
-              <span class="font-bold underline">Note : </span>All goods sold are
-              not refundable.
-            </p>
+          <p className="font-semibold">
+            <span class="font-bold underline">Note : </span>All goods sold are
+            not refundable.
+          </p>
 
-            <div class="flex items-center gap-2">
+          <div class="py-4 space-y-4">
+            <div className="text-start">
+              <img src="/ppc_bank_qr.jpeg" className="w-[40mm]" alt="qr" />
+            </div>
+            {/* <div class="flex items-center gap-2">
               <div class="w-4 h-4 bg-blue-500 rounded"></div>
               <p>
                 <span class="font-bold">PPC Bank</span> : 1-110-00021880-8
               </p>
-            </div>
+            </div> */}
 
             <div class="flex items-center gap-2">
               <div class="w-4 h-4 bg-blue-500 rounded"></div>

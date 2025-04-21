@@ -336,20 +336,19 @@ const Invoice80mm = ({ invoice, contentRef }) => {
           </table>
         </div>
 
-        <div class="max-w-[80mm] p-2 space-y-2 text-xs">
-          <div className="text-center">
-            <img src="/ppc_bank_qr.jpeg" className="w-[50%]" alt="qr" />
-          </div>
+        <div class="max-w-[80mm] py-2 space-y-2 text-xs">
           <p class="font-semibold leading-tight text-xs">
             <span class="font-bold underline">Note:</span> All goods sold are
             not refundable.
           </p>
-
-          <div class="flex items-start gap-2">
+          <div className="text-start">
+            <img src="/ppc_bank_qr.jpeg" className="w-[50%]" alt="qr" />
+          </div>
+          {/* <div class="flex items-start gap-2">
             <p class="leading-tight">
               <span class="font-bold">PPC Bank</span>: 1-110-00021880-8
             </p>
-          </div>
+          </div> */}
 
           <div class="flex items-start gap-2">
             <p class="leading-tight">
