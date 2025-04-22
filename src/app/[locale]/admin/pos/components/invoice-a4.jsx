@@ -355,25 +355,32 @@ const InvoiceA4 = ({ invoice, contentRef }) => {
             </div> */}
 
             <div class="flex items-center gap-2">
-              <div class="w-4 h-4 bg-blue-500 rounded"></div>
-              <p>
-                <span class="font-bold">PPC Name</span> : U2BE,BEAUTY CLINIC
+              <p className="flex">
+                <span class="font-bold flex items-center gap-1">
+                  <div class="w-4 h-4 bg-blue-500 rounded"></div>
+                  PPC Name
+                </span>{" "}
+                : U2BE,BEAUTY CLINIC
               </p>
             </div>
 
             <div class="flex items-center gap-2">
-              <div class="w-4 h-4 bg-blue-500 rounded"></div>
-              <p>
-                <span class="font-bold">Telegram</span> : 069 99 00 62 / 089 99
-                00 62
+              <p className="flex">
+                <span class="font-bold flex items-center gap-1">
+                  <div class="w-4 h-4 bg-blue-500 rounded"></div>
+                  Telegram
+                </span>{" "}
+                : 069 99 00 62 / 089 99 00 62
               </p>
             </div>
 
-            <div class="flex items-center gap-2">
-              <div class="w-4 h-4 bg-blue-500 rounded"></div>
-              <p>
-                <span class="font-bold">Facebook</span> : U2BE Beauty Clinic
-                ឯកទេសព្យាបាលមុនដោយមិនញេច
+            <div class="flex items-start gap-2">
+              <p className="flex items-start">
+                <span class="font-bold flex items-center gap-1">
+                  <div class="w-4 h-4 bg-blue-500 rounded"></div>
+                  Facebook
+                </span>{" "}
+                : U2BE Beauty Clinic ឯកទេសព្យាបាលមុនដោយមិនញេច
               </p>
             </div>
           </div>

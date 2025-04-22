@@ -364,10 +364,10 @@ const Invoice80mm = ({ invoice, contentRef }) => {
           </div>
 
           <div class="flex items-start gap-2">
-            <p class="leading-tight">
-              <span class="font-bold">Facebook</span>: U2BE Beauty Clinic
-              ឯកទេសព្យាបាលមុនដោយមិនញេច
-            </p>
+            <p className="flex gap-1 leading-tight">
+                <span class="font-bold">Facebook:</span>
+                <span>U2BE Beauty Clinic ឯកទេសព្យាបាលមុនដោយមិនញេច</span>
+              </p>
           </div>
         </div>
 
