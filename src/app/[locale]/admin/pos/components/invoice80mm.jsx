@@ -38,7 +38,7 @@ const Invoice80mm = ({ invoice, contentRef }) => {
             src={APP_LOGO_POS_80_PINTER}
             className="object-contain w-auto h-10"
           />
-          <div className="flex flex-col flex-1 items-center justify-center text-start">
+          <div className="flex flex-col flex-1 text-start">
             <p className="text-sm font-bold text-gray-800">{APP_NAME_KH}</p>
             <p className="text-sm font-bold text-gray-800">{APP_NAME}</p>
             <p className="mt-0.5 text-[10px] text-black">

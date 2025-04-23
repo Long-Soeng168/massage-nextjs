@@ -34,12 +34,12 @@ const InvoiceA4 = ({ invoice, contentRef }) => {
         <div className="flex items-center gap-2">
           <img
             alt=""
-            width={300}
-            height={300}
+            width={250}
+            height={250}
             src={APP_LOGO}
-            className="object-contain w-48 h-full"
+            className="object-contain w-40 h-full"
           />
-          <div className="flex flex-col flex-1 items-center justify-center h-full text-start">
+          <div className="flex flex-col flex-1 h-full text-start">
             <p className="text-3xl font-bold text-gray-800">{APP_NAME_KH}</p>
             <p className="text-3xl font-bold text-gray-800">{APP_NAME}</p>
             <p className="mt-2 text-sm text-gray-600">
@@ -386,8 +386,8 @@ const InvoiceA4 = ({ invoice, contentRef }) => {
           </div>
 
           {/* Divider */}
-          <div className="flex flex-wrap gap-4 mt-10 text-center">
-            <div className="flex-1">
+          <div className="flex whitespace-nowrap justify-between gap-4 mt-10 text-center">
+            <div className="w-52">
               {/* <p className="text-sm text-gray-700">
                 <strong>ហត្ថលេខាអតិថិជន</strong>
               </p> */}
@@ -396,14 +396,14 @@ const InvoiceA4 = ({ invoice, contentRef }) => {
               </p>
               <hr className="mx-4 border-black mt-14" />
             </div>
-            <div className="flex-1">
+            <div className="w-52">
               {/* <p className="text-sm text-gray-700">
                 <strong>ហត្ថលេខាអ្នកលក់</strong>
               </p> */}
               <p className="text-sm text-gray-700">
                 <strong>Customer Signature</strong>
               </p>
-              <hr className="mx-4 border-black mt-14" />
+              <hr className="mx-4 max-w-sm border-black mt-14" />
             </div>
           </div>
 
