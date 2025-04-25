@@ -31,22 +31,24 @@ const Invoice80mm = ({ invoice, contentRef }) => {
       >
         {/* Header Section */}
         <div className="flex items-center gap-1">
-          <img
-            alt="App Logo"
-            width={60}
-            height={60}
-            src={APP_LOGO_POS_80_PINTER}
-            className="object-contain w-auto h-10"
-          />
-          <div className="flex flex-col flex-1 text-start">
-            <p className="text-sm font-bold text-gray-800">{APP_NAME_KH}</p>
-            <p className="text-sm font-bold text-gray-800">{APP_NAME}</p>
+          <div className="flex flex-col flex-1 text-center">
+            <img
+              alt="App Logo"
+              width={60}
+              height={60}
+              src={APP_LOGO_POS_80_PINTER}
+              className="object-contain w-auto h-24"
+            />
+            <p className="text-base font-bold text-gray-800">{APP_NAME_KH}</p>
+            <p className="mt-0.5 text-[12px] text-black">
+              ឯកទេសព្យាបាលមុនដោយមិនញេច
+            </p>
             <p className="mt-0.5 text-[10px] text-black">
-              <strong>Phone:</strong> {APP_CONTACT}
+              <span>Tel:</span> 069 990 062 / 089 990 062
             </p>
-            <p className="text-[10px] text-black">
+            {/* <p className="text-[10px] text-black">
               <strong>Email:</strong> {APP_EMAIL}
-            </p>
+            </p> */}
             {/* <p className="text-[10px] text-black">
               <strong>Website:</strong>{" "}
               <a href={APP_WEBSITE} className="text-black hover:underline">
@@ -69,11 +71,12 @@ const Invoice80mm = ({ invoice, contentRef }) => {
                 <strong>Customer:</strong> {invoice?.customer?.name || "N/A"}
               </p>
               <p className="text-[10px] text-black">
-                <strong>Address:</strong> {invoice?.customer?.address || "N/A"}
-              </p>
-              <p className="text-[10px] text-black">
                 <strong>Telephone:</strong> {invoice?.customer?.phone || "N/A"}
               </p>
+              <p className="text-[10px] text-black">
+                <strong>Address:</strong> {invoice?.customer?.address || "N/A"}
+              </p>
+
               {/* {invoice?.customer?.credit >= 0 && ( */}
               <p className="text-[10px] text-black">
                 <strong>Credit Remain:</strong> ${" "}
@@ -336,13 +339,15 @@ const Invoice80mm = ({ invoice, contentRef }) => {
           </table>
         </div>
 
-        <div class="max-w-[80mm] py-2 space-y-2 text-xs">
+        <div class="max-w-[80mm] py-2 space-y-2 text-xs text-center">
           <p class="font-semibold leading-tight text-xs">
             <span class="font-bold underline">Note:</span> All goods sold are
             not refundable.
           </p>
-          <div className="text-start">
+          <div className="text-center">
+            <p class="leading-tight text-base py-2">ស្កេនបង់ប្រាក់</p>
             <img src="/ppc_bank_qr.jpeg" className="w-[50%]" alt="qr" />
+            <p class="leading-tight text-[13px] py-2">U2BE, BEAUTY CLINIC</p>
           </div>
           {/* <div class="flex items-start gap-2">
             <p class="leading-tight">
@@ -350,25 +355,12 @@ const Invoice80mm = ({ invoice, contentRef }) => {
             </p>
           </div> */}
 
-          <div class="flex items-start gap-2">
-            <p class="leading-tight">
-              <span class="font-bold">PPC Name</span>: U2BE, BEAUTY CLINIC
-            </p>
-          </div>
-
-          <div class="flex items-start gap-2">
+          {/* <div class="flex items-start gap-2">
             <p class="leading-tight">
               <span class="font-bold">Telegram</span>: 069 99 00 62 / 089 99 00
               62
             </p>
-          </div>
-
-          <div class="flex items-start gap-2">
-            <p className="flex gap-1 leading-tight">
-                <span class="font-bold">Facebook:</span>
-                <span>U2BE Beauty Clinic ឯកទេសព្យាបាលមុនដោយមិនញេច</span>
-              </p>
-          </div>
+          </div> */}
         </div>
 
         {/* Footer Section */}

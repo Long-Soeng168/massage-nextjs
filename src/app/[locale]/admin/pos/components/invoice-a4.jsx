@@ -41,13 +41,13 @@ const InvoiceA4 = ({ invoice, contentRef }) => {
           />
           <div className="flex flex-col flex-1 h-full text-start">
             <p className="text-3xl font-bold text-gray-800">{APP_NAME_KH}</p>
-            <p className="text-3xl font-bold text-gray-800">{APP_NAME}</p>
+            <p className="text-xl text-gray-800">ឯកទេសព្យាបាលមុនដោយមិនញេច</p>
             <p className="mt-2 text-sm text-gray-600">
-              <strong>Phone:</strong> {APP_CONTACT}
+              <span>Tel:</span> 069 990 062 / 089 990 062
             </p>
-            <p className="text-sm text-gray-600">
+            {/* <p className="text-sm text-gray-600">
               <strong>Email:</strong> {APP_EMAIL}
-            </p>
+            </p> */}
             {/* <p className="text-sm text-gray-600">
               <strong>Website:</strong>{" "}
               <a href={APP_WEBSITE} className="text-blue-500 hover:underline">
@@ -70,12 +70,12 @@ const InvoiceA4 = ({ invoice, contentRef }) => {
                 <strong>Customer:</strong> {invoice?.customer?.name || "N/A"}
               </p>
               <p className="text-sm text-gray-700">
+                <strong>Telephone:</strong> {invoice?.customer?.phone || "N/A"}
+              </p>
+              <p className="text-sm text-gray-700">
                 <strong>Address:</strong> {invoice?.customer?.address || "N/A"}
               </p>
 
-              <p className="text-sm text-gray-700">
-                <strong>Telephone:</strong> {invoice?.customer?.phone || "N/A"}
-              </p>
 
               {/* {invoice?.customer?.credit >= 0 && ( */}
               <p className="text-sm text-black">
@@ -344,7 +344,8 @@ const InvoiceA4 = ({ invoice, contentRef }) => {
           </p>
 
           <div class="py-4 space-y-4">
-            <div className="text-start">
+            <div className="text-start w-[40mm]">
+              <p class="leading-tight text-base py-2 text-center">ស្កេនបង់ប្រាក់</p>
               <img src="/ppc_bank_qr.jpeg" className="w-[40mm]" alt="qr" />
             </div>
             {/* <div class="flex items-center gap-2">
