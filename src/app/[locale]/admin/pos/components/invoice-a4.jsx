@@ -1,3 +1,4 @@
+import { EXCHANGE_RATE } from "@/config/env";
 import {
   APP_CONTACT,
   APP_EMAIL,
@@ -60,9 +61,9 @@ const InvoiceA4 = ({ invoice, contentRef }) => {
         <hr className="mt-4 border-black border-dashed" />
 
         <div className="py-4">
-          <h2 className="mb-4 text-2xl font-semibold text-center text-gray-800">
+          {/* <h2 className="mb-4 text-2xl font-semibold text-center text-gray-800">
             INVOICE
-          </h2>
+          </h2> */}
           {/* Customer Details */}
           <div className="flex flex-wrap gap-4">
             <div className="flex-1">
@@ -76,7 +77,6 @@ const InvoiceA4 = ({ invoice, contentRef }) => {
                 <strong>Address:</strong> {invoice?.customer?.address || "N/A"}
               </p>
 
-
               {/* {invoice?.customer?.credit >= 0 && ( */}
               <p className="text-sm text-black">
                 <strong>Credit Remain:</strong> ${" "}
@@ -86,7 +86,7 @@ const InvoiceA4 = ({ invoice, contentRef }) => {
             </div>
             <div className="flex items-end flex-1 flex-col gap-0.5">
               <p className="text-sm text-gray-700">
-                <strong>No:</strong> #
+                <strong>No: </strong>
                 {new Intl.NumberFormat("en", {
                   minimumIntegerDigits: 6,
                   useGrouping: false,
@@ -327,6 +327,14 @@ const InvoiceA4 = ({ invoice, contentRef }) => {
                   {Number(invoice.total).toFixed(2)} $
                 </td>
               </tr>
+              <tr>
+                <th className="px-2 py-1 text-right" colSpan="4">
+                  Total (Riel)
+                </th>
+                <td className="px-2 py-1 text-right whitespace-nowrap">
+                  {(Number(invoice.total) * EXCHANGE_RATE).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, " ")} ៛
+                </td>
+              </tr>
             </tfoot>
           </table>
         </div>
@@ -345,7 +353,9 @@ const InvoiceA4 = ({ invoice, contentRef }) => {
 
           <div class="py-4 space-y-4">
             <div className="text-start w-[40mm]">
-              <p class="leading-tight text-base py-2 text-center">ស្កេនបង់ប្រាក់</p>
+              <p class="leading-tight text-base py-2 text-center">
+                ស្កេនបង់ប្រាក់
+              </p>
               <img src="/ppc_bank_qr.jpeg" className="w-[40mm]" alt="qr" />
             </div>
             {/* <div class="flex items-center gap-2">

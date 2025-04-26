@@ -1,3 +1,4 @@
+import { EXCHANGE_RATE } from "@/config/env";
 import {
   APP_CONTACT,
   APP_EMAIL,
@@ -61,9 +62,9 @@ const Invoice80mm = ({ invoice, contentRef }) => {
         <hr className="mt-1 border-dashed borderlack" />
 
         <div className="py-1">
-          <h2 className="mb-1 text-base font-semibold text-center text-gray-800">
+          {/* <h2 className="mb-1 text-base font-semibold text-center text-gray-800">
             INVOICE
-          </h2>
+          </h2> */}
 
           <div className="flex mb-2">
             <div className="flex flex-1 flex-col gap-0.5">
@@ -86,7 +87,7 @@ const Invoice80mm = ({ invoice, contentRef }) => {
             </div>
             <div className="flex items-end flex-1 flex-col gap-0.5">
               <p className="text-[10px] text-black">
-                <strong>No:</strong> #
+                <strong>No: </strong>
                 {new Intl.NumberFormat("en", {
                   minimumIntegerDigits: 6,
                   useGrouping: false,
@@ -333,6 +334,14 @@ const Invoice80mm = ({ invoice, contentRef }) => {
                 </th>
                 <td className="px-2 py-1 text-right">
                   {Number(invoice.total).toFixed(2)} $
+                </td>
+              </tr>
+              <tr>
+                <th className="px-2 py-1 text-right" colSpan="4">
+                  Total (Riel)
+                </th>
+                <td className="px-2 py-1 text-right whitespace-nowrap">
+                  {(Number(invoice.total) * EXCHANGE_RATE).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, " ")} ៛
                 </td>
               </tr>
             </tfoot>
