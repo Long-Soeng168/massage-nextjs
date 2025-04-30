@@ -40,13 +40,30 @@ const InvoiceDialog = () => {
       html2canvas: { scale: 4 },
       jsPDF: {
         unit: "mm",
-        format: printSize === "80" ? "letter" : "A4",
+        format: printSize === "80" ? [80, 200] : "a4", // 80mm wide, 200mm tall
         orientation: "portrait",
       },
     };
 
     html2pdf().set(options).from(element).save();
   };
+
+  // const handleDownloadPDF = () => {
+  //   const element = contentRef.current;
+  //   const options = {
+  //     margin: 0.5,
+  //     filename: "invoice.pdf",
+  //     image: { type: "jpeg", quality: 0.98 },
+  //     html2canvas: { scale: 4 },
+  //     jsPDF: {
+  //       unit: "mm",
+  //       format: printSize === "80" ? "letter" : "A4",
+  //       orientation: "portrait",
+  //     },
+  //   };
+
+  //   html2pdf().set(options).from(element).save();
+  // };
   if (!invoice || !isClient) {
     return null;
   }

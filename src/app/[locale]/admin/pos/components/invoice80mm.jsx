@@ -33,18 +33,20 @@ const Invoice80mm = ({ invoice, contentRef }) => {
         {/* Header Section */}
         <div className="flex items-center gap-1">
           <div className="flex flex-col flex-1 text-center">
-            <img
-              alt="App Logo"
-              width={60}
-              height={60}
-              src={APP_LOGO_POS_80_PINTER}
-              className="object-contain w-auto h-24"
-            />
-            <p className="text-base font-bold text-gray-800">{APP_NAME_KH}</p>
-            <p className="mt-0.5 text-[12px] text-black">
+            <span className="flex justify-center items-center">
+              <img
+                alt="App Logo"
+                width={60}
+                height={60}
+                src={APP_LOGO_POS_80_PINTER}
+                className="object-contain w-24 h-24"
+              />
+            </span>
+            <p className="text-base font-bold text-gray-800 m-0">{APP_NAME_KH}</p>
+            <p className="text-[12px] text-black m-0">
               ឯកទេសព្យាបាលមុនដោយមិនញេច
             </p>
-            <p className="mt-0.5 text-[10px] text-black">
+            <p className="text-[10px] text-black m-0">
               <span>Tel:</span> 069 990 062 / 089 990 062
             </p>
             {/* <p className="text-[10px] text-black">
@@ -68,32 +70,32 @@ const Invoice80mm = ({ invoice, contentRef }) => {
 
           <div className="flex mb-2">
             <div className="flex flex-1 flex-col gap-0.5">
-              <p className="text-[10px] text-black">
+              <p className="text-[10px] text-black m-0">
                 <strong>Customer:</strong> {invoice?.customer?.name || "N/A"}
               </p>
-              <p className="text-[10px] text-black">
+              <p className="text-[10px] text-black m-0">
                 <strong>Telephone:</strong> {invoice?.customer?.phone || "N/A"}
               </p>
-              <p className="text-[10px] text-black">
+              <p className="text-[10px] text-black m-0">
                 <strong>Address:</strong> {invoice?.customer?.address || "N/A"}
               </p>
 
               {/* {invoice?.customer?.credit >= 0 && ( */}
-              <p className="text-[10px] text-black">
+              <p className="text-[10px] text-black m-0">
                 <strong>Credit Remain:</strong> ${" "}
                 {invoice?.customer?.credit || "0"}
               </p>
               {/* )} */}
             </div>
             <div className="flex items-end flex-1 flex-col gap-0.5">
-              <p className="text-[10px] text-black">
+              <p className="text-[10px] text-black m-0">
                 <strong>No: </strong>
                 {new Intl.NumberFormat("en", {
                   minimumIntegerDigits: 6,
                   useGrouping: false,
                 }).format(invoice.id)}
               </p>
-              <p className="text-[10px] text-black">
+              <p className="text-[10px] text-black m-0">
                 <strong>Date:</strong>{" "}
                 {invoice?.created_at &&
                   new Date(invoice.created_at).toLocaleDateString("en-GB", {
@@ -105,17 +107,17 @@ const Invoice80mm = ({ invoice, contentRef }) => {
                   })}
               </p>
               {invoice?.payment?.name && (
-                <p className="text-[10px] text-black">
+                <p className="text-[10px] text-black m-0">
                   <strong>Pay By:</strong> {invoice?.payment?.name || "N/A"}
                 </p>
               )}
               {invoice?.paymentTypeId == 0 && (
-                <p className="text-[10px] text-black">
+                <p className="text-[10px] text-black m-0">
                   <strong>Pay By:</strong> Credit
                 </p>
               )}
               {invoice?.user?.name && (
-                <p className="text-[10px] text-black">
+                <p className="text-[10px] text-black m-0">
                   <strong>Seller:</strong> {invoice?.user?.name || "N/A"}
                 </p>
               )}
@@ -341,7 +343,10 @@ const Invoice80mm = ({ invoice, contentRef }) => {
                   Total (Riel)
                 </th>
                 <td className="px-2 py-1 text-right whitespace-nowrap">
-                  {(Number(invoice.total) * EXCHANGE_RATE).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, " ")} ៛
+                  {(Number(invoice.total) * EXCHANGE_RATE)
+                    .toFixed(0)
+                    .replace(/\B(?=(\d{3})+(?!\d))/g, " ")}{" "}
+                  ៛
                 </td>
               </tr>
             </tfoot>
