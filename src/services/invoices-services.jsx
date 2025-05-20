@@ -15,8 +15,8 @@ export async function getHolds() {
     return null;
   }
 }
-export async function getRecentInvoices() {
-  const url = BASE_API_URL + `/recent_invoices`;
+export async function getRecentInvoices(inv_id) {
+  const url = BASE_API_URL + `/recent_invoices?inv_id=${inv_id || ''}`;
   try {
     const response = await fetch(url, {
       cache: 'no-cache'

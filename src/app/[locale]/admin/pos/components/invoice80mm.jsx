@@ -89,11 +89,11 @@ const Invoice80mm = ({ invoice, contentRef }) => {
             </div>
             <div className="flex items-end flex-1 flex-col gap-0.5">
               <p className="text-[10px] text-black m-0">
-                <strong>No: </strong>
+                <strong>{invoice?.inv_id ? 'INV_ID' : 'ID'}: </strong>
                 {new Intl.NumberFormat("en", {
                   minimumIntegerDigits: 6,
                   useGrouping: false,
-                }).format(invoice.id)}
+                }).format(invoice?.inv_id ? invoice.inv_id : invoice.id)}
               </p>
               <p className="text-[10px] text-black m-0">
                 <strong>Date:</strong>{" "}

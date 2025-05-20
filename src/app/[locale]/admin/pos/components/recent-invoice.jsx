@@ -60,8 +60,10 @@ import { usePOSDetailContext } from "@/contexts/POSDetailContext";
 import CartItem from "./cart-item";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { useInvoiceContext } from "@/contexts/POSInvoiceContext";
+import { Input } from "@/components/ui/input";
 
 export function RecentInvoice() {
+  const [inv_id, setInv_id] = React.useState(null);
   const [holds, setHolds] = React.useState([]);
   const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState(null);
@@ -86,7 +88,7 @@ export function RecentInvoice() {
     setLoading(true);
     setError(null);
     try {
-      const results = await getRecentInvoices();
+      const results = await getRecentInvoices(inv_id);
       setHolds(results);
       //   console.log(results)
     } catch (err) {
@@ -101,6 +103,25 @@ export function RecentInvoice() {
       fetchHolds();
     }
   }, [isDrawerOpen]);
+
+  const handleSearch = async () => {
+    setLoading(true);
+    setError(null);
+    try {
+      const results = await getRecentInvoices(inv_id);
+      setHolds(results);
+      //   console.log(results)
+    } catch (err) {
+      setError(err.message || "Something went wrong");
+    } finally {
+      setLoading(false);
+    }
+  };
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      handleSearch();
+    }
+  };
 
   const handleEdit = (index) => {
     // console.log(holds[index]);
@@ -180,39 +201,52 @@ export function RecentInvoice() {
               {loading && <MyLoadingAnimation />}
               {error && <p className="text-red-500">Error: {error}</p>}
               {!loading && !error && (
-                <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-4">
-                  {holds?.map((hold, index) => (
-                    <div
-                      key={hold.id}
-                      className="flex flex-col justify-between h-full gap-2 p-3 border rounded-md bg-background"
-                    >
-                      <div className="text-base">
-                        <span className="text-xl font-bold">#{hold.id}</span>
-                        <p className="text-gray-600">
-                          Customer: {hold.customer?.name || "N/A"}
-                        </p>
-                        <p className="text-gray-600">
-                          Total Items: {hold.items?.length || 0}
-                        </p>
-                        {hold.discount != 0 && (
+                <>
+                  <div className="flex items-center gap-2 mb-4">
+                    <Button onClick={handleSearch}>Search</Button>
+                    <Input
+                      value={inv_id}
+                      onChange={(e) => setInv_id(e.target.value)}
+                      onKeyDown={handleKeyDown}
+                      placeholder="Search INV_ID or ID"
+                    />
+                  </div>
+                  <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-4">
+                    {holds?.map((hold, index) => (
+                      <div
+                        key={hold.id}
+                        className="flex flex-col justify-between h-full gap-2 p-3 border rounded-md bg-background"
+                      >
+                        <div className="text-base">
+                          <span className="text-xl font-bold">INV_ID : {hold.inv_id}</span>
                           <p className="text-gray-600">
-                            Total Discount: {hold.discount || 0}
-                            {hold.discountType == "dollar" ? " $" : " %"}
+                            ID: {hold.id || "N/A"}
                           </p>
-                        )}
-                        <p className="text-gray-600">
-                          Total Price:{" "}
-                          <span className="text-destructive">
-                            {hold.total || "0"} $
-                          </span>
-                        </p>
-                        <p className="text-base text-gray-950 line-clamp-5">
-                          <span className="font-bold">Note</span>:{" "}
-                          {hold.note || "N/A"}
-                        </p>
-                      </div>
-                      <div className="flex flex-wrap items-center justify-end gap-2 mt-2">
-                        {/* <AlertDialog>
+                          <p className="text-gray-600">
+                            Customer: {hold.customer?.name || "N/A"}
+                          </p>
+                          <p className="text-gray-600">
+                            Total Items: {hold.items?.length || 0}
+                          </p>
+                          {hold.discount != 0 && (
+                            <p className="text-gray-600">
+                              Total Discount: {hold.discount || 0}
+                              {hold.discountType == "dollar" ? " $" : " %"}
+                            </p>
+                          )}
+                          <p className="text-gray-600">
+                            Total Price:{" "}
+                            <span className="text-destructive">
+                              {hold.total || "0"} $
+                            </span>
+                          </p>
+                          <p className="text-base text-gray-950 line-clamp-5">
+                            <span className="font-bold">Note</span>:{" "}
+                            {hold.note || "N/A"}
+                          </p>
+                        </div>
+                        <div className="flex flex-wrap items-center justify-end gap-2 mt-2">
+                          {/* <AlertDialog>
                           <TooltipProvider delayDuration={0}>
                             <Tooltip>
                               <TooltipTrigger asChild>
@@ -253,48 +287,48 @@ export function RecentInvoice() {
                           </AlertDialogContent>
                         </AlertDialog> */}
 
-                        <TooltipProvider delayDuration={0}>
-                          <Tooltip>
-                            <TooltipTrigger asChild>
-                              <Button
-                                size="icon"
-                                className="bg-yellow-500 hover:bg-yellow-400"
-                                onClick={() => {
-                                  handlePrintInvoice(index);
-                                }}
-                              >
-                                <ReceiptTextIcon className="w-4 h-4" />
-                                <span className="sr-only">Print</span>
-                              </Button>
-                            </TooltipTrigger>
-                            <TooltipContent>
-                              <p>Print Invoice</p>
-                            </TooltipContent>
-                          </Tooltip>
-                        </TooltipProvider>
+                          <TooltipProvider delayDuration={0}>
+                            <Tooltip>
+                              <TooltipTrigger asChild>
+                                <Button
+                                  size="icon"
+                                  className="bg-yellow-500 hover:bg-yellow-400"
+                                  onClick={() => {
+                                    handlePrintInvoice(index);
+                                  }}
+                                >
+                                  <ReceiptTextIcon className="w-4 h-4" />
+                                  <span className="sr-only">Print</span>
+                                </Button>
+                              </TooltipTrigger>
+                              <TooltipContent>
+                                <p>Print Invoice</p>
+                              </TooltipContent>
+                            </Tooltip>
+                          </TooltipProvider>
 
-                        <TooltipProvider delayDuration={0}>
-                          <Tooltip>
-                            <TooltipTrigger asChild>
-                              <Button
-                                onClick={() => {
-                                  setSelectedForView(index);
-                                  setIsDrawerDetailHoldOpen(true);
-                                }}
-                                size="icon"
-                                variant="outline"
-                              >
-                                <Eye className="w-4 h-4" />
-                                <span className="sr-only">View</span>
-                              </Button>
-                            </TooltipTrigger>
-                            <TooltipContent>
-                              <p>View Detail</p>
-                            </TooltipContent>
-                          </Tooltip>
-                        </TooltipProvider>
+                          <TooltipProvider delayDuration={0}>
+                            <Tooltip>
+                              <TooltipTrigger asChild>
+                                <Button
+                                  onClick={() => {
+                                    setSelectedForView(index);
+                                    setIsDrawerDetailHoldOpen(true);
+                                  }}
+                                  size="icon"
+                                  variant="outline"
+                                >
+                                  <Eye className="w-4 h-4" />
+                                  <span className="sr-only">View</span>
+                                </Button>
+                              </TooltipTrigger>
+                              <TooltipContent>
+                                <p>View Detail</p>
+                              </TooltipContent>
+                            </Tooltip>
+                          </TooltipProvider>
 
-                        {/* <TooltipProvider delayDuration={0}>
+                          {/* <TooltipProvider delayDuration={0}>
                           <Tooltip>
                             <TooltipTrigger asChild>
                               <Button
@@ -312,10 +346,11 @@ export function RecentInvoice() {
                             </TooltipContent>
                           </Tooltip>
                         </TooltipProvider> */}
+                        </div>
                       </div>
-                    </div>
-                  ))}
-                </div>
+                    ))}
+                  </div>
+                </>
               )}
               {!loading && holds?.length == 0 && (
                 <p className="flex items-center justify-center gap-2 text-primary">

@@ -61,6 +61,8 @@ export default function Detail({ payments }) {
     setSuccessMessage,
     setIsOpenSuccessDialog,
     setIsShowBtnInSuccessDialog,
+    editInvId,
+    setEditInvId
   } = usePOSDetailContext();
 
   const { setInvoice } = useInvoiceContext();
@@ -154,6 +156,7 @@ export default function Detail({ payments }) {
 
     const orderData = {
       customerId: selectedCustomer?.id,
+      ...(editInvId ? { inv_id: editInvId } : {}),
       paymentTypeId: selectedPayment,
       discount: discountAmount,
       discountType: discountType,
@@ -214,6 +217,7 @@ export default function Detail({ payments }) {
       setError(error.message);
     } finally {
       setLoading(false);
+      setEditInvId(null);
     }
   };
 
@@ -227,6 +231,7 @@ export default function Detail({ payments }) {
     const orderData = {
       customerId: selectedCustomer?.id,
       discount: discountAmount,
+      ...(editInvId ? { inv_id: editInvId } : {}),
       discountType: discountType,
       subtotal: getTotalPrice(),
       total: getTotalAfterDiscountDollar(),
@@ -282,6 +287,7 @@ export default function Detail({ payments }) {
       setError(error.message);
     } finally {
       setLoading(false);
+      setEditInvId(null);
     }
   };
 
@@ -311,7 +317,7 @@ export default function Detail({ payments }) {
     <>
       <section className="sticky top-0 flex flex-col h-[90vh] md:h-screen">
         <h2 className="w-full p-2 text-lg font-bold text-center">
-          Order Details
+           {editInvId ? `Edit INV_ID: ${editInvId}` : 'Order Details'}
         </h2>
         <ScrollArea className="flex-1 pt-1 border-t">
           <table className="w-full">
@@ -396,6 +402,7 @@ export default function Detail({ payments }) {
               <ShadCNButton
                 onClick={() => {
                   clearCart();
+                  setEditInvId(null);
                   setOrderNote("");
                   setIsOpenSuccessDialog(true);
                   setSuccessMessage("Clear Items Successfully.");

@@ -69,6 +69,7 @@ export function Holds() {
     setDiscountAmount,
     setDiscountType,
     setOrderNote,
+    setEditInvId,
   } = usePOSDetailContext();
 
   const { setInvoice, setIsOpenInvoiceDialog } = useInvoiceContext();
@@ -97,13 +98,17 @@ export function Holds() {
 
   const handleEdit = (index) => {
     // console.log(holds[index]);
+    if (holds[index].inv_id) {
+      setEditInvId(holds[index].inv_id);
+    }else {
+      handleDelete(holds[index].id);
+    }
     setIsDrawerDetailHoldOpen(false);
     clearCart();
     addMultipleToCart(holds[index].items);
     setSelectedCustomer(holds[index].customer || null);
     setDiscountAmount(holds[index].discount || 0);
-    setDiscountType(holds[index].discountType || "percentage");
-    handleDelete(holds[index].id);
+    setDiscountType(holds[index].discountType || "percentage"); 
     setOrderNote(holds[index].note);
     setIsDrawerOpen(false);
   };
@@ -168,7 +173,13 @@ export function Holds() {
                       className="flex flex-col justify-between h-full gap-2 p-3 border rounded-md bg-background"
                     >
                       <div className="text-base">
-                        <span className="text-xl font-bold">#{hold.id}</span>
+                        <span className="text-xl font-bold">
+                          {hold?.inv_id ? "INV_ID" : "ID"}:{" "}
+                          {hold?.inv_id ? hold.inv_id : hold.id}
+                        </span>
+                        <p className="text-gray-600">
+                          {hold?.inv_id && `ID: ${hold.id}`}
+                        </p>
                         <p className="text-gray-600">
                           Customer: {hold.customer?.name || "N/A"}
                         </p>

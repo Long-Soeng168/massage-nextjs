@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 // Create the DetailContext
 const DetailContext = createContext();
@@ -18,6 +18,25 @@ export function POSDetailProvider({ children }) {
   const [isOpenSuccessDialog, setIsOpenSuccessDialog] = useState(false);
   const [isShowBtnInSuccessDialog, setIsShowBtnInSuccessDialog] = useState(false);
 
+  // Load initial editInvId from localStorage
+  const [editInvId, setEditInvId] = useState(() => {
+    if (typeof window !== "undefined") {
+      return localStorage.getItem("posEditInvId") || null;
+    }
+    return null;
+  });
+
+  // Sync editInvId to localStorage whenever it changes
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      if (editInvId !== null) {
+        localStorage.setItem("posEditInvId", editInvId);
+      } else {
+        localStorage.removeItem("posEditInvId");
+      }
+    }
+  }, [editInvId]);
+
   return (
     <DetailContext.Provider
       value={{
@@ -31,6 +50,8 @@ export function POSDetailProvider({ children }) {
         setIsOpenDialog,
         orderNote,
         setOrderNote,
+        editInvId,
+        setEditInvId,
 
         successTitle,
         setSuccessTitle,
