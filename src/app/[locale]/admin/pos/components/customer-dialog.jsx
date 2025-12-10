@@ -25,9 +25,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 
-import { deleteHold } from "@/services/invoices-services";
 import MyLoadingAnimation from "@/components/ui/my-loading-animation";
-import { useInvoiceContext } from "@/contexts/POSInvoiceContext";
 import { getCustomers } from "@/services/customers-services";
 
 import {
@@ -44,7 +42,6 @@ import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import axios from "axios";
 import { BASE_BACKEND_URL } from "@/config/env";
-import { revalidatePath } from "next/cache";
 import { useToast } from "@/hooks/use-toast";
 import { ToastAction } from "@/components/ui/toast";
 
@@ -470,11 +467,15 @@ export function CustomerDialog() {
                 id="customerName"
                 value={customerName}
                 onChange={(e) => setCustomerName(e.target.value)}
-                className={`${customerErrors?.customerName && 'border-red-500'} col-span-3`}
+                className={`${
+                  customerErrors?.customerName && "border-red-500"
+                } col-span-3`}
               />
             </div>
             {customerErrors?.customerName && (
-              <p className="mb-3 text-red-500">{customerErrors?.customerName}</p>
+              <p className="mb-3 text-red-500">
+                {customerErrors?.customerName}
+              </p>
             )}
 
             {/* Customer Phone Field */}
