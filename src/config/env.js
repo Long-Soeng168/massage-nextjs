@@ -1,5 +1,5 @@
-const BASE_BACKEND_URL = "https://admin-massage.brolong.pro";
-const APP_URL = "https://massage.brolong.pro/";
+const BASE_BACKEND_URL = "https://admin-u2be.corasolution.com";
+const APP_URL = "https://u2be.corasolution.com/";
 
 const IS_SHOW_KID_BOOKS = false;
 const EXCHANGE_RATE = 4050;

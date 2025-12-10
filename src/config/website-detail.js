@@ -13,7 +13,7 @@ const APP_WEBSITE = "";
 const APP_LOGO = "/logo.png";
 const APP_LOGO_POS_80_PINTER = "/logo.png";
 const APP_FAVICON =
-  "https://admin-massage.brolong.pro/assets/images/website_infos/logo.png";
+  "https://admin-u2be.corasolution.com/assets/images/website_infos/logo.png";
 const APP_CONTACT = "+855 89 990 062";
 const APP_PAYMENT_MAYTHOD = ``;
 
