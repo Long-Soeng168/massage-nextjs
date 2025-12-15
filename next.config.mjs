@@ -13,10 +13,7 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        hostname: "admin-massage.brolong.pro",
-      },
-      {
-        hostname: "admin-massage.brolong.pro",
+        hostname: "admin-u2be.corasolution.com",
       },
       {
         hostname: "127.0.0.1",
