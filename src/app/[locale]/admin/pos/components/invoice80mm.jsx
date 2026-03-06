@@ -33,7 +33,7 @@ const Invoice80mm = ({ invoice, contentRef }) => {
         {/* Header Section */}
         <div className="flex items-center gap-1">
           <div className="flex flex-col flex-1 text-center">
-            <span className="flex justify-center items-center">
+            {/* <span className="flex justify-center items-center">
               <img
                 alt="App Logo"
                 width={60}
@@ -41,7 +41,7 @@ const Invoice80mm = ({ invoice, contentRef }) => {
                 src={APP_LOGO_POS_80_PINTER}
                 className="object-contain w-24 h-24"
               />
-            </span>
+            </span> */}
             <p className="text-base font-bold text-gray-800 m-0">{APP_NAME_KH}</p>
             <p className="text-[12px] text-black m-0">
               ឯកទេសព្យាបាលមុនដោយមិនញេច

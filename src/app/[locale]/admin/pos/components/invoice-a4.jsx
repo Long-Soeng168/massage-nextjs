@@ -33,13 +33,13 @@ const InvoiceA4 = ({ invoice, contentRef }) => {
       >
         {/* Header Section */}
         <div className="flex items-center gap-2">
-          <img
+          {/* <img
             alt=""
             width={250}
             height={250}
             src={APP_LOGO}
             className="object-contain w-40 h-full"
-          />
+          /> */}
           <div className="flex flex-col flex-1 h-full text-start">
             <p className="text-3xl font-bold text-gray-800">{APP_NAME_KH}</p>
             <p className="text-xl text-gray-800">ឯកទេសព្យាបាលមុនដោយមិនញេច</p>

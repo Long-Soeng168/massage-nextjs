@@ -20,13 +20,13 @@ const InvoiceQuotation = ({
       >
         {/* Header Section */}
         <div className="flex items-center gap-2">
-          <img
+          {/* <img
             alt=""
             width={300}
             height={300}
             src={APP_LOGO}
             className="object-contain w-48 h-full"
-          />
+          /> */}
           <div className="flex flex-col justify-center h-full text-start">
             <p className="text-3xl font-bold text-gray-800">{APP_NAME_KH}</p>
             <p className="text-3xl font-bold text-gray-800">{APP_NAME}</p>
